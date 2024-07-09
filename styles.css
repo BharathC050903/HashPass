@@ -1,7 +1,9 @@
 body {
   justify-self: center;
   align-self: center;
-  background-color: #fa7b6df8;
+  background: linear-gradient(#e66465, #9198e5) no-repeat;
+  height: 100dvh;
+  /* width: 100dvb; */
 }
 .box1 {
   display: flex;
@@ -64,9 +66,10 @@ body {
   color: rgb(0, 0, 0);
   overflow-y: visible;
   overflow-x: visible;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   position: absolute; /* Position absolutely for overlay */
   width: 300px;
+  margin-top: 0.3rem;
 }
 
 .passOutput {
@@ -83,9 +86,14 @@ body {
   width: 2rem;
   height: 2rem;
 }
+
+.HashPassGenerate {
+  margin-top: 3.2rem;
+}
 .GenerateButton {
   font-family: "Recursive", sans-serif;
   font-size: 2.2rem;
+  position: relative;
 }
 .HashPass {
   margin-top: 2rem;

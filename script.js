@@ -110,7 +110,7 @@ function generateUniquePassword() {
   }
 
   const uniquePassword = passwordElement.value.trim();
-  const websiteName = websiteElement.value.trim();
+  let websiteName = websiteElement.value.trim().toLowerCase(); // Convert website name to lowercase
 
   const validation = validatePassword(uniquePassword); // Validate password before generating
 
@@ -148,30 +148,16 @@ function generateUniquePassword() {
   warningElement.textContent = ""; // Clear any previous validation warnings
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const passwordElement = document.getElementById("password");
-
-  // Add event listeners for focus change and input validation
-  if (passwordElement) {
-    passwordElement.addEventListener("blur", handlePasswordFocus);
-  }
-
-  const generateButton = document.querySelector(".button-30");
-  const copyButton = document.querySelector(".button-54");
-
-  if (generateButton) {
-    generateButton.addEventListener("click", generateUniquePassword);
-  }
-
-  if (copyButton) {
-    copyButton.addEventListener("click", copyToClipboard);
-  }
-});
-
+// Function to copy the generated password to the clipboard
 // Function to copy the generated password to the clipboard
 function copyToClipboard() {
   const outputElement = document.querySelector(".passOutput");
   const passwordText = outputElement.textContent;
+
+  if (passwordText == "Your password") {
+    alert("Generate a password first. 😊");
+    return;
+  }
 
   if (!navigator.clipboard) {
     // Clipboard API not supported
@@ -182,7 +168,7 @@ function copyToClipboard() {
   navigator.clipboard
     .writeText(passwordText)
     .then(() => {
-      alert("Password copied to clipboard!");
+      alert("Password copied to clipboard! 😊");
     })
     .catch((err) => {
       console.error("Error copying password to clipboard: ", err);
@@ -219,6 +205,13 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  const passwordElement = document.getElementById("password");
+
+  // Add event listeners for focus change and input validation
+  if (passwordElement) {
+    passwordElement.addEventListener("blur", handlePasswordFocus);
+  }
+
   const generateButton = document.querySelector(".button-30");
   const copyButton = document.querySelector(".button-54");
 
