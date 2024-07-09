@@ -1,5 +1,10 @@
 body {
+  justify-self: center;
+  align-self: center;
   background-color: #fa7b6df8;
+  height: 98dvh;
+  width: 99dvw;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
 .box1 {
   display: flex;
@@ -193,7 +198,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  transition: 0.3s;
+  transition: 0.7s;
 }
 
 .button-54:active {
