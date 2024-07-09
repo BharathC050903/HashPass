@@ -10,6 +10,8 @@ HashPass is a web-based tool for generating secure passwords based on a unique i
 
 ## Table of Contents
 
+- [Link](https://hashpass.netlify.app/)
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
@@ -21,8 +23,7 @@ HashPass is a web-based tool for generating secure passwords based on a unique i
 
 1. Clone the repository: `git clone https://github.com/yourusername/hashpass.git`
 2. Navigate into the project directory: `cd hashpass`
-3. Install dependencies: `npm install`
-4. Start the application: `npm start`
+3. Go live !
 
 ## Usage
 
