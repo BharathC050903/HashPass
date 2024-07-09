@@ -2,15 +2,16 @@ body {
   justify-self: center;
   align-self: center;
   background-color: #fa7b6df8;
-  height: 98dvh;
-  width: 99dvw;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
 }
 .box1 {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.validation-warning {
+  font-size: 10px;
 }
 
 .typewriter h1 {
@@ -54,8 +55,18 @@ body {
   font-size: 1.2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto; /* Change grid rows to auto for dynamic content */
   gap: 1.2rem;
+  position: relative; /* Add position relative to parent container */
+}
+
+.validation-warning {
+  color: rgb(0, 0, 0);
+  overflow-y: visible;
+  overflow-x: visible;
+  font-size: 0.6rem;
+  position: absolute; /* Position absolutely for overlay */
+  width: 300px;
 }
 
 .passOutput {
