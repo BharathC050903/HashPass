@@ -13,37 +13,7 @@ body {
 }
 
 .validation-warning {
-  font-size: 10px;
-}
-
-.typewriter h1 {
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
-  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-
-/* The typing effect */
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-/* The typewriter cursor effect */
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: orange;
-  }
+  font-size: 1rem;
 }
 
 .pageHeading {
@@ -54,32 +24,33 @@ body {
 
 .passwordWebsiteContainer {
   font-family: "Recursive", sans-serif;
-  font-size: 1.2rem;
+  font-size: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto; /* Change grid rows to auto for dynamic content */
-  gap: 1.2rem;
+  gap: 2rem;
   position: relative; /* Add position relative to parent container */
 }
 
 .validation-warning {
-  color: rgb(0, 0, 0);
+  color: rgba(155, 244, 244, 0.896);
   overflow-y: visible;
   overflow-x: visible;
   font-size: 0.8rem;
   position: absolute; /* Position absolutely for overlay */
   width: 300px;
-  margin-top: 0.3rem;
+  margin-top: 0.45rem;
 }
 
 .passOutput {
   /*height: 1rem;*/
   padding: 1rem;
-  width: 200px;
+  width: 275px;
   background-color: aliceblue;
   display: inline-block;
   box-shadow: 10px 8px 0px #b6bbce;
   color: #3b3333;
+  transition: 0.5s;
 }
 
 .copyimg {
@@ -261,7 +232,7 @@ body {
   background: rgb(31, 32, 35);
   border: 1px solid rgb(60, 63, 68);
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 1.6rem;
   color: rgb(247, 248, 248);
   appearance: none;
   transition: border 0.15s ease 0s;
@@ -271,7 +242,7 @@ body {
 .textBox:focus {
   outline: none;
   box-shadow: none;
-  border-color: rgb(100, 153, 255);
+  border-color: rgb(255, 255, 255);
   box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1),
-    8px 8px 0px 0px rgba(218, 102, 123, 1);
+    8px 8px 0px 0px rgb(74, 202, 228);
 }
