@@ -24,12 +24,21 @@ body {
 
 .passwordWebsiteContainer {
   font-family: "Recursive", sans-serif;
-  font-size: 2rem;
+  font-size: 2rem; /* Default font size */
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto; /* Change grid rows to auto for dynamic content */
+  grid-template-columns: 1fr 1fr; /* 1 column */
+  grid-template-rows: 1fr 1fr; /* 4 rows */
   gap: 2rem;
   position: relative; /* Add position relative to parent container */
+}
+
+@media (max-width: 768px) {
+  /* Adjust max-width as needed for phone screens */
+  .passwordWebsiteContainer {
+    font-size: 1.6rem; /* Decrease font size for smaller screens */
+    grid-template-columns: 1fr; /* 1 column */
+    grid-template-rows: auto auto auto auto; /* 4 rows */
+  }
 }
 
 .validation-warning {
