@@ -1,9 +1,10 @@
 body {
   justify-self: center;
   align-self: center;
-  background: linear-gradient(#e66465, #9198e5) no-repeat;
-  height: 100dvh;
+  /* backgroundi: linear-gradient(#e66465, #9198e5) no-repeat; */
+  /* height: 100dvh; */
   /* width: 100dvb; */
+  background-image: url(img/bg.png);
 }
 .box1 {
   display: flex;
@@ -17,12 +18,14 @@ body {
 }
 
 .pageHeading {
+  color: #b6bbce;
   font-family: "Recursive", sans-serif;
   font-size: 4.2rem;
   margin-bottom: 4.2rem;
 }
 
 .passwordWebsiteContainer {
+  color: #b6bbce;
   font-family: "Recursive", sans-serif;
   font-size: 2rem; /* Default font size */
   display: grid;
