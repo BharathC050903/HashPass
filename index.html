@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HashPass</title>
+    <script src="script.js"></script>
+    <script src="hashgenerator.js"></script>
     <link rel="icon" href="img/logo.png" type="image/png" />
 
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="buttons.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -25,7 +27,7 @@
         <div class="passwordInput">
           <input
             placeholder="Unique Password here"
-            class="textBox"
+            class="textBox passInp"
             type="text"
             id="password"
           />
@@ -35,12 +37,45 @@
         <div class="websiteTitle">Website Name:</div>
         <div class="websiteInput">
           <input
-            placeholder="eg: netflix"
+            placeholder="Eg: netflix"
             class="textBox"
             type="text"
             id="website"
           />
         </div>
+      </div>
+      <div class="options">
+        <div class="checkbox-wrapper-35">
+          <input
+            value="private"
+            name="switch"
+            id="switch"
+            type="checkbox"
+            class="switch"
+          />
+          <label for="switch">
+            <span class="switch-x-text">: </span>
+            <span class="switch-x-toggletext">
+              <span class="switch-x-unchecked"
+                ><span class="switch-x-hiddenlabel icon">Unchecked: </span>
+                <img src="img/eyeClosed.png" alt="See password" />
+              </span>
+              <span class="switch-x-checked"
+                ><span class="switch-x-hiddenlabel icon">Checked: </span>
+                <img src="img/eyeOpen.png" alt="See password" />
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <button class="comic-button" role="button">
+          <img src="img/downlaod.png" class="icon" alt="upload-button" />
+          Generate hash
+        </button>
+        <button class="comic-button" role="button">
+          <img src="img/file.png" class="icon" alt="download-button" />
+          Upload hash
+        </button>
       </div>
       <div class="HashPassGenerate">
         <button class="button-30" role="button">Generate &darr;</button>
@@ -48,8 +83,8 @@
       <div class="HashPass">
         <p class="passOutput">Your password</p>
 
-        <button class="button-54" role="button">
-          <img src="img/copy.png" class="copyimg" alt="copy-button" />
+        <button class="button-54 copy" role="button">
+          <img src="img/clipboard.png" class="icon" alt="copy-button" />
         </button>
       </div>
     </section>

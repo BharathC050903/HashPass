@@ -47,17 +47,17 @@ body {
 }
 
 .validation-warning {
-  color: rgba(155, 244, 244, 0.896);
+  color: rgba(0, 0, 0, 0.896);
   overflow-y: visible;
   overflow-x: visible;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   position: absolute; /* Position absolutely for overlay */
   width: 300px;
   margin-top: 0.45rem;
 }
 
 .passOutput {
-  /*height: 1rem;*/
+  height: 2rem;
   padding: 1rem;
   width: 275px;
   background-color: rgb(0, 0, 0);
@@ -67,7 +67,7 @@ body {
   transition: 0.5s;
 }
 
-.copyimg {
+.icon {
   width: 2rem;
   height: 2rem;
 }
@@ -96,151 +96,6 @@ body {
   box-shadow: 0.2px solid black;
 }
 
-/* CSS */
-.button-30 {
-  align-items: center;
-  appearance: none;
-  background-color: #000000;
-  border-radius: 4px;
-  border-width: 0;
-  box-shadow: rgba(152, 147, 164, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: "JetBrains Mono", monospace;
-  height: 48px;
-  justify-content: center;
-  line-height: 1;
-  list-style: none;
-  overflow: hidden;
-  padding-left: 16px;
-  padding-right: 16px;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transition: box-shadow 0.15s, transform 0.15s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: nowrap;
-  will-change: box-shadow, transform;
-  font-size: 18px;
-}
-
-.button-30:focus {
-  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-}
-
-.button-30:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
-    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
-  transform: translateY(-2px);
-}
-
-.button-30:active {
-  box-shadow: #d6d6e7 0 3px 7px inset;
-  transform: translateY(10px);
-}
-
-/* CSS */
-.button-89 {
-  --b: 3px; /* border thickness */
-  --s: 0.45em; /* size of the corner */
-  --color: #373b44;
-
-  padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
-  color: var(--color);
-  --_p: var(--s);
-  background: conic-gradient(
-      from 90deg at var(--b) var(--b),
-      #0000 90deg,
-      var(--color) 0
-    )
-    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
-    calc(100% - var(--b) - 2 * var(--_p));
-  transition: 0.3s linear, color 0s, background-color 0s;
-  outline: var(--b) solid #0000;
-  outline-offset: 0.6em;
-  font-size: 16px;
-
-  border: 0;
-
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-89:hover,
-.button-89:focus-visible {
-  --_p: 0px;
-  outline-color: var(--color);
-  outline-offset: 0.05em;
-}
-
-.button-89:active {
-  background: var(--color);
-  color: #fff;
-}
-
-/* CSS */
-.button-54 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  letter-spacing: 2px;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #000000;
-  cursor: pointer;
-  border: 3px solid;
-  padding: 0.25em 0.5em;
-  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px,
-    5px 5px 0px 0px;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  transition: 0.7s;
-}
-
-.button-54:active {
-  box-shadow: 0px 0px 0px 0px;
-  top: 5px;
-  left: 5px;
-}
-
-.button-54::after {
-  content: "copy!";
-  position: absolute;
-  top: -30px; /* Adjust this value to position the message above the button */
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.35
-  ); /* Background color for better visibility */
-  color: #fbfbfbdf; /* Text color */
-  padding: 5px 10px;
-  border-radius: 3px;
-  pointer-events: none; /* Ensure it doesn't interfere with the button click */
-}
-
-.button-54:hover::after {
-  opacity: 1;
-}
-
-@media (min-width: 768px) {
-  .button-54 {
-    padding: 0.25em 0.75em;
-  }
-}
-
 .textBox {
   padding: 6px 12px;
   background: rgb(31, 32, 35);
@@ -258,4 +113,192 @@ body {
   box-shadow: none;
   border-color: rgb(241, 241, 241);
   box-shadow: 0px 0px 0px 2px rgb(92, 57, 57), 8px 8px 0px 0px rgb(158, 79, 170);
+}
+
+/* Options */
+
+.options {
+  gap: 0.8rem;
+  margin: 1.8rem;
+  display: grid;
+  width: 50dvw;
+  grid-template-columns: 0.3fr 0.4fr 0.4fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.options button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; /* Adjust gap as needed */
+  padding: 0.5rem; /* Adjust padding as needed */
+}
+
+.options img {
+  position: relative; /* Change position to relative */
+  top: 0; /* Reset any previous top value */
+}
+
+.btn-container {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.btn-color-mode-switch {
+  display: inline-block;
+  margin: 0px;
+  position: relative;
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner {
+  margin: 0px;
+  width: 140px;
+  height: 40px;
+  background-color: #fcce8a;
+  border-radius: 26px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  /*box-shadow: 0px 0px 8px 0px rgba(17, 17, 17, 0.34) inset;*/
+  display: block;
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:before {
+  content: attr(data-on);
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+  top: 7px;
+  right: 20px;
+  color: #222;
+}
+
+.btn-color-mode-switch > label.btn-color-mode-switch-inner:after {
+  content: attr(data-off);
+  width: 70px;
+  height: 25px;
+  background: #fff;
+  border-radius: 26px;
+  position: absolute;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  left: 2px;
+  top: 2px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0px 0px 6px -2px #111;
+  padding: 5px 0px;
+  color: #222;
+  font-weight: 600;
+}
+
+/* View on and off*/
+.checkbox-wrapper-35 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.checkbox-wrapper-35 .switch {
+  display: none;
+}
+
+.checkbox-wrapper-35 .switch + label {
+  display: flex;
+  align-items: center;
+  color: #1f2023; /* On color */
+  cursor: pointer;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  position: relative;
+  user-select: none;
+}
+
+.checkbox-wrapper-35 .switch + label::before,
+.checkbox-wrapper-35 .switch + label::after {
+  content: "";
+  display: block;
+}
+
+.checkbox-wrapper-35 .switch + label::before {
+  background-color: #ffa09e; /* Off color */
+  border-radius: 250px; /* Half the original */
+  height: 30px; /* Half the original */
+  margin-right: 16px; /* Adjusted proportionally */
+  transition: background-color 0.125s ease-out;
+  width: 50px; /* Half the original */
+}
+
+.checkbox-wrapper-35 .switch + label::after {
+  background-color: #fff; /* Default background color */
+  border-radius: 26px; /* Half the original */
+  box-shadow: 0 6px 2px 0 rgba(37, 34, 71, 0.05),
+    0 4px 4px 0 rgba(37, 34, 71, 0.1), 0 6px 6px 0 rgba(37, 34, 71, 0.05); /* Adjusted proportionally */
+  height: 26px; /* Half the original */
+  left: 2px; /* Adjusted proportionally */
+  position: absolute;
+  top: 2px; /* Adjusted proportionally */
+  transition: transform 0.125s ease-out;
+  width: 26px; /* Half the original */
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-text {
+  margin-right: 0.6em; /* Adjusted proportionally */
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-toggletext {
+  font-weight: bold;
+  height: 30px; /* Half the original */
+  overflow: hidden;
+  position: relative;
+  width: 50px; /* Half the original */
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-unchecked,
+.checkbox-wrapper-35 .switch + label .switch-x-checked {
+  position: absolute;
+  top: 0;
+  transition: opacity 0.125s ease-out, transform 0.125s ease-out;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-unchecked {
+  opacity: 1;
+  transform: none;
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-checked {
+  opacity: 0;
+  transform: translate3d(0, 50%, 0); /* Adjusted proportionally */
+}
+
+.checkbox-wrapper-35 .switch + label .switch-x-hiddenlabel {
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkbox-wrapper-35 .switch:checked + label::before {
+  background-color: #1f2023; /* On color */
+}
+
+.checkbox-wrapper-35 .switch:checked + label::after {
+  transform: translate3d(20px, 0, 0); /* Adjusted proportionally */
+}
+
+.checkbox-wrapper-35 .switch:checked + label .switch-x-unchecked {
+  opacity: 0;
+  transform: translate3d(0, -50%, 0); /* Adjusted proportionally */
+}
+
+.checkbox-wrapper-35 .switch:checked + label .switch-x-checked {
+  opacity: 1;
+  transform: none;
+}
+
+.checkbox-wrapper-35 .switch + label img {
+  width: 36px; /* 1.5 times larger */
+  height: 36px; /* 1.5 times larger */
+  vertical-align: middle;
 }
