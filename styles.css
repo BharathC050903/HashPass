@@ -4,8 +4,10 @@ body {
   /* backgroundi: linear-gradient(#e66465, #9198e5) no-repeat; */
   /* height: 100dvh; */
   /* width: 100dvb; */
-  background-image: url(img/bg.png);
+  background-image: url(img/bg4.jpg);
+  background-size: 100%; /* <------ */
 }
+
 .box1 {
   display: flex;
   flex-direction: column;
@@ -18,14 +20,14 @@ body {
 }
 
 .pageHeading {
-  color: #b6bbce;
+  color: #000000;
   font-family: "Recursive", sans-serif;
   font-size: 4.2rem;
   margin-bottom: 4.2rem;
 }
 
 .passwordWebsiteContainer {
-  color: #b6bbce;
+  color: #000000;
   font-family: "Recursive", sans-serif;
   font-size: 2rem; /* Default font size */
   display: grid;
@@ -58,10 +60,10 @@ body {
   /*height: 1rem;*/
   padding: 1rem;
   width: 275px;
-  background-color: aliceblue;
+  background-color: rgb(0, 0, 0);
   display: inline-block;
-  box-shadow: 10px 8px 0px #b6bbce;
-  color: #3b3333;
+  box-shadow: 10px 8px 0px #505565;
+  color: #e9e4e4;
   transition: 0.5s;
 }
 
@@ -98,13 +100,13 @@ body {
 .button-30 {
   align-items: center;
   appearance: none;
-  background-color: #fcfcfd;
+  background-color: #000000;
   border-radius: 4px;
   border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+  box-shadow: rgba(152, 147, 164, 0.4) 0 2px 4px,
     rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   box-sizing: border-box;
-  color: #000000;
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   font-family: "JetBrains Mono", monospace;
@@ -190,7 +192,7 @@ body {
   letter-spacing: 2px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #000;
+  color: #000000;
   cursor: pointer;
   border: 3px solid;
   padding: 0.25em 0.5em;
@@ -242,7 +244,7 @@ body {
 .textBox {
   padding: 6px 12px;
   background: rgb(31, 32, 35);
-  border: 1px solid rgb(60, 63, 68);
+  border: 1px solid rgb(97, 103, 113);
   border-radius: 4px;
   font-size: 1.6rem;
   color: rgb(247, 248, 248);
@@ -254,7 +256,6 @@ body {
 .textBox:focus {
   outline: none;
   box-shadow: none;
-  border-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 0px 2px rgba(0, 0, 0, 1),
-    8px 8px 0px 0px rgb(74, 202, 228);
+  border-color: rgb(241, 241, 241);
+  box-shadow: 0px 0px 0px 2px rgb(92, 57, 57), 8px 8px 0px 0px rgb(158, 79, 170);
 }
