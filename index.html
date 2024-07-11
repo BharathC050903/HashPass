@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HashPass</title>
     <script src="script.js"></script>
-    <script src="hashgenerator.js"></script>
+    <script src="hashFile.js"></script>
     <link rel="icon" href="img/logo.png" type="image/png" />
 
     <link rel="stylesheet" href="styles.css" />
@@ -20,7 +20,14 @@
   </head>
   <body>
     <section class="box1">
-      <div class="pageHeading typewriter">HashPass</div>
+      <div class="pageHeading typewriter">
+        <img
+          class="logo"
+          src="img/logo.png"
+          alt="Lock and documents , the logo of the page"
+        />
+        HashPass
+      </div>
 
       <div class="passwordWebsiteContainer">
         <div class="passwordTitle">Password:</div>
@@ -68,15 +75,17 @@
           </label>
         </div>
 
-        <button class="comic-button" role="button">
+        <button class="comic-button downloadHash" role="button">
           <img src="img/downlaod.png" class="icon" alt="upload-button" />
           Generate hash
         </button>
-        <button class="comic-button" role="button">
+        <button class="comic-button uploadHash" role="button">
           <img src="img/file.png" class="icon" alt="download-button" />
           Upload hash
         </button>
       </div>
+      <span class="fileUploadStatus"></span>
+
       <div class="HashPassGenerate">
         <button class="button-30" role="button">Generate &darr;</button>
       </div>
