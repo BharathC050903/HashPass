@@ -24,6 +24,31 @@ function generateHashTable() {
   return hashTable;
 }
 
+// Function to generate a 32-character random string
+function generateRandomString(length) {
+  const charset =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+  let randomString = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    randomString += charset[randomIndex];
+  }
+  return randomString;
+}
+
+// Function to download a text file
+function downloadTextFile(filename, text) {
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.style.display = "none";
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 // Function to validate password
 function validatePassword(password) {
   // Password must be at least 12 characters long and contain at least one uppercase letter, lowercase letter, number, and special character
@@ -149,7 +174,6 @@ function generateUniquePassword() {
 }
 
 // Function to copy the generated password to the clipboard
-// Function to copy the generated password to the clipboard
 function copyToClipboard() {
   const outputElement = document.querySelector(".passOutput");
   const passwordText = outputElement.textContent;
@@ -204,6 +228,41 @@ function fallbackCopyTextToClipboard(text) {
   document.body.removeChild(textArea);
 }
 
+// Function to handle file upload and generate hash
+function handleFileUpload(file) {
+  const reader = new FileReader();
+
+  reader.onload = function (event) {
+    const uploadedContent = event.target.result.trim();
+    const hashTable = generateHashTable();
+    const hashTableLength = hashTable.length;
+    let asciiProduct = 1;
+
+    // Multiply ASCII values of each character in uploaded content
+    for (let i = 0; i < uploadedContent.length; i++) {
+      asciiProduct *= getAsciiValue(uploadedContent.charAt(i));
+    }
+
+    // Generate a hash using ASCII product and previous multiplication values
+    let generatedHash = "";
+    for (let i = 0; i < 16; i++) {
+      generatedHash += hashTable[asciiProduct % hashTableLength];
+      asciiProduct = Math.floor(asciiProduct / hashTableLength);
+    }
+
+    // Append generatedHash to existing password output
+    const outputElement = document.querySelector(".passOutput");
+    outputElement.textContent += generatedHash;
+    alert(`Generated Hash: ${generatedHash}`);
+  };
+
+  reader.onerror = function (event) {
+    console.error("File reading error:", event.target.error);
+  };
+
+  reader.readAsText(file);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const passwordElement = document.getElementById("password");
 
@@ -214,6 +273,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const generateButton = document.querySelector(".button-30");
   const copyButton = document.querySelector(".button-54");
+  const uploadButton = document.querySelector(".uploadHash");
 
   if (generateButton) {
     generateButton.addEventListener("click", generateUniquePassword);
@@ -221,5 +281,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (copyButton) {
     copyButton.addEventListener("click", copyToClipboard);
+  }
+
+  if (uploadButton) {
+    uploadButton.addEventListener("change", function (event) {
+      const file = event.target.files[0];
+      if (file) {
+        handleFileUpload(file);
+      }
+    });
   }
 });

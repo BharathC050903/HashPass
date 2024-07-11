@@ -72,13 +72,14 @@ document.addEventListener("DOMContentLoaded", function () {
         asciiProduct = Math.floor(asciiProduct / hashTableLength);
       }
 
-      alert(`Generated Hash: ${generatedHash}`);
-
-      // Update file upload status
-      const fileUploadStatus = document.querySelector(".fileUploadStatus");
-      if (fileUploadStatus) {
-        fileUploadStatus.textContent = "File uploaded";
+      // Display hash in passOutput paragraph tag
+      const passOutput = document.querySelector(".passOutput");
+      if (passOutput) {
+        passOutput.textContent = generatedHash;
       }
+
+      // Alert with the generated hash
+      alert(`Generated Hash: ${generatedHash}`);
     };
 
     reader.onerror = function (event) {
