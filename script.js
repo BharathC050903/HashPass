@@ -1,3 +1,43 @@
+// Function to generate a 32-character random string
+function generateRandomString(length) {
+  const charset =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+  let randomString = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    randomString += charset[randomIndex];
+  }
+  return randomString;
+}
+
+// Function to download a text file
+function downloadTextFile(filename, text) {
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.style.display = "none";
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(url);
+  document.body.removeChild(a); // Clean up after downloading
+}
+
+// Event listener for the download hash button
+document.addEventListener("DOMContentLoaded", function () {
+  const downloadButton = document.getElementById("downloadHash");
+  if (downloadButton) {
+    downloadButton.addEventListener("click", function () {
+      const randomString = generateRandomString(32);
+      const filename = "random_string.txt";
+      downloadTextFile(filename, randomString);
+    });
+  } else {
+    console.error("Download button not found!");
+  }
+});
+
 // Function to get ASCII value of a character
 function getAsciiValue(char) {
   return char.charCodeAt(0);
@@ -22,31 +62,6 @@ function generateHashTable() {
   const specialCharArray = specialChars.split("");
   hashTable.push(...specialCharArray);
   return hashTable;
-}
-
-// Function to generate a 32-character random string
-function generateRandomString(length) {
-  const charset =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
-  let randomString = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length);
-    randomString += charset[randomIndex];
-  }
-  return randomString;
-}
-
-// Function to download a text file
-function downloadTextFile(filename, text) {
-  const blob = new Blob([text], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.style.display = "none";
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  URL.revokeObjectURL(url);
 }
 
 // Function to validate password
