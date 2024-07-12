@@ -1,4 +1,4 @@
-// Function to generate a 32-character random string
+// Utility Functions
 function generateRandomString(length) {
   const charset =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
@@ -10,7 +10,6 @@ function generateRandomString(length) {
   return randomString;
 }
 
-// Function to download a text file
 function downloadTextFile(filename, text) {
   const blob = new Blob([text], { type: "text/plain" });
   const url = URL.createObjectURL(blob);
@@ -21,57 +20,29 @@ function downloadTextFile(filename, text) {
   document.body.appendChild(a);
   a.click();
   URL.revokeObjectURL(url);
-  document.body.removeChild(a); // Clean up after downloading
+  document.body.removeChild(a);
 }
 
-// Event listener for the download hash button
-document.addEventListener("DOMContentLoaded", function () {
-  const downloadButton = document.getElementById("downloadHash");
-  if (downloadButton) {
-    downloadButton.addEventListener("click", function () {
-      const randomString = generateRandomString(32);
-      const filename = "random_string.txt";
-      downloadTextFile(filename, randomString);
-    });
-  } else {
-    console.error("Download button not found!");
-  }
-});
-
-// Function to get ASCII value of a character
 function getAsciiValue(char) {
   return char.charCodeAt(0);
 }
 
-// Function to generate a hash table
 function generateHashTable() {
   const hashTable = [];
-  for (let i = 97; i <= 122; i++) {
-    // a-z
-    hashTable.push(String.fromCharCode(i));
-  }
-  for (let i = 65; i <= 90; i++) {
-    // A-Z
-    hashTable.push(String.fromCharCode(i));
-  }
-  for (let i = 48; i <= 57; i++) {
-    // 0-9
-    hashTable.push(String.fromCharCode(i));
-  }
-  const specialChars = '!@#$%^&*()_+{}:"<>?[];'; // Define at least 10 special characters
-  const specialCharArray = specialChars.split("");
-  hashTable.push(...specialCharArray);
+  for (let i = 97; i <= 122; i++) hashTable.push(String.fromCharCode(i)); // a-z
+  for (let i = 65; i <= 90; i++) hashTable.push(String.fromCharCode(i)); // A-Z
+  for (let i = 48; i <= 57; i++) hashTable.push(String.fromCharCode(i)); // 0-9
+  const specialChars = '!@#$%^&*()_+{}:"<>?[];'; // Special characters
+  hashTable.push(...specialChars.split(""));
   return hashTable;
 }
 
-// Function to validate password
 function validatePassword(password) {
-  // Password must be at least 12 characters long and contain at least one uppercase letter, lowercase letter, number, and special character
   const minLength = 12;
   const hasUpperCase = /[A-Z]/.test(password);
   const hasLowerCase = /[a-z]/.test(password);
   const hasNumber = /\d/.test(password);
-  const hasSpecialChar = /[!@#$%^&*()_+{}:"<>?[\];]/.test(password); // Adjusted for special characters
+  const hasSpecialChar = /[!@#$%^&*()_+{}:"<>?[\];]/.test(password);
 
   if (password.length < minLength) {
     return {
@@ -79,60 +50,48 @@ function validatePassword(password) {
       error: "Password must be at least 12 characters long.",
     };
   }
-
   if (!hasUpperCase) {
     return {
       valid: false,
       error: "Password must contain at least one uppercase letter.",
     };
   }
-
   if (!hasLowerCase) {
     return {
       valid: false,
       error: "Password must contain at least one lowercase letter.",
     };
   }
-
   if (!hasNumber) {
     return {
       valid: false,
       error: "Password must contain at least one number.",
     };
   }
-
   if (!hasSpecialChar) {
     return {
       valid: false,
       error: "Password must contain at least one special character.",
     };
   }
-
   return { valid: true };
 }
 
-// Function to handle focus change on password input
+// Password Handling Functions
 function handlePasswordFocus() {
   const passwordElement = document.getElementById("password");
   const warningElement = document.getElementById("passwordWarning");
 
-  if (!passwordElement || !warningElement) {
-    return;
-  }
+  if (!passwordElement || !warningElement) return;
 
   if (passwordElement.value.trim() === "") {
     warningElement.textContent = "Password cannot be empty.";
   } else {
     const validation = validatePassword(passwordElement.value);
-    if (!validation.valid) {
-      warningElement.textContent = validation.error;
-    } else {
-      warningElement.textContent = "";
-    }
+    warningElement.textContent = validation.valid ? "" : validation.error;
   }
 }
 
-// Function to generate the unique password
 function generateUniquePassword(fileContent) {
   const passwordElement = document.getElementById("password");
   const websiteElement = document.getElementById("website");
@@ -150,10 +109,9 @@ function generateUniquePassword(fileContent) {
   }
 
   const uniquePassword = passwordElement.value.trim();
-  let websiteName = websiteElement.value.trim().toLowerCase(); // Convert website name to lowercase
+  let websiteName = websiteElement.value.trim().toLowerCase();
 
-  const validation = validatePassword(uniquePassword); // Validate password before generating
-
+  const validation = validatePassword(uniquePassword);
   if (!validation.valid) {
     warningElement.textContent = validation.error;
     return;
@@ -163,28 +121,22 @@ function generateUniquePassword(fileContent) {
   const hashTableLength = hashTable.length;
 
   let asciiProduct = 1;
-
-  // Multiply ASCII values of each character in uploaded file content
   for (let i = 0; i < fileContent.length; i++) {
     asciiProduct *= getAsciiValue(fileContent.charAt(i));
   }
-
-  // Multiply ASCII values of each character in website name and password
   for (let i = 0; i < uniquePassword.length && i < websiteName.length; i++) {
-    const websiteChar = websiteName.charAt(i);
-    const passwordChar = uniquePassword.charAt(i);
-    asciiProduct *= getAsciiValue(websiteChar) * getAsciiValue(passwordChar);
+    asciiProduct *=
+      getAsciiValue(websiteName.charAt(i)) *
+      getAsciiValue(uniquePassword.charAt(i));
   }
 
-  // Generate a hash using ASCII product and previous multiplication values
   let generatedPassword = "";
   for (let i = 0; i < 16; i++) {
     generatedPassword += hashTable[asciiProduct % hashTableLength];
     asciiProduct = Math.floor(asciiProduct / hashTableLength);
   }
 
-  // Insert special character at a fixed position
-  const specialChars = '!@#$%^&*()_+{}:"<>?[];'; // Define at least 10 special characters
+  const specialChars = '!@#$%^&*()_+{}:"<>?[];';
   const specialIndex = getAsciiValue(uniquePassword.charAt(0)) % 16;
   const specialChar = specialChars.charAt(specialIndex % specialChars.length);
   generatedPassword =
@@ -193,37 +145,86 @@ function generateUniquePassword(fileContent) {
     generatedPassword.substring(specialIndex + 1);
 
   outputElement.textContent = generatedPassword;
-  warningElement.textContent = ""; // Clear any previous validation warnings
+  warningElement.textContent = "";
 }
 
-// Function to handle file upload
+// File Handling Functions
 function handleFileUpload(file) {
   const reader = new FileReader();
-
   reader.onload = function (event) {
     const fileContent = event.target.result.trim();
     generateUniquePassword(fileContent);
   };
-
   reader.onerror = function (event) {
     console.error("File reading error:", event.target.error);
   };
-
   reader.readAsText(file);
 }
 
+// Clipboard Handling Functions
+function copyToClipboard() {
+  const outputElement = document.querySelector(".passOutput");
+  const passwordText = outputElement.textContent;
+
+  if (passwordText.trim() === "") {
+    alert("Generate a password first.");
+    return;
+  }
+
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(passwordText);
+    return;
+  }
+
+  navigator.clipboard
+    .writeText(passwordText)
+    .then(() => alert("Password copied to clipboard!"))
+    .catch((err) => {
+      console.error("Error copying password to clipboard: ", err);
+      fallbackCopyTextToClipboard(passwordText);
+    });
+}
+
+function fallbackCopyTextToClipboard(text) {
+  const textArea = document.createElement("textarea");
+  textArea.value = text;
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    document.execCommand("copy");
+    alert("Password copied to clipboard!");
+  } catch (err) {
+    console.error("Fallback: Oops, unable to copy", err);
+    alert("Oops, unable to copy password to clipboard. Please copy manually.");
+  }
+
+  document.body.removeChild(textArea);
+}
+
+// Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
   const passwordElement = document.getElementById("password");
-
-  // Add event listeners for focus change and input validation
-  if (passwordElement) {
+  if (passwordElement)
     passwordElement.addEventListener("blur", handlePasswordFocus);
+
+  const downloadButton = document.getElementById("downloadHash");
+  if (downloadButton) {
+    downloadButton.addEventListener("click", function () {
+      const randomString = generateRandomString(32);
+      const filename = "random_string.txt";
+      downloadTextFile(filename, randomString);
+    });
+  } else {
+    console.error("Download button not found!");
   }
 
   const generateButton = document.querySelector(".button-30");
-  const copyButton = document.querySelector(".button-54");
-  const uploadButton = document.querySelector(".uploadHash");
-
   if (generateButton) {
     generateButton.addEventListener("click", function () {
       const fileUploadElement = document.getElementById("fileUpload");
@@ -235,71 +236,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (copyButton) {
-    copyButton.addEventListener("click", copyToClipboard);
-  }
+  const copyButton = document.querySelector(".button-54");
+  if (copyButton) copyButton.addEventListener("click", copyToClipboard);
 
+  const uploadButton = document.querySelector(".uploadHash");
   if (uploadButton) {
     uploadButton.addEventListener("change", function (event) {
       const file = event.target.files[0];
-      if (file) {
-        handleFileUpload(file);
-      }
+      if (file) handleFileUpload(file);
     });
   }
 });
-
-// Function to copy the generated password to the clipboard
-function copyToClipboard() {
-  const outputElement = document.querySelector(".passOutput");
-  const passwordText = outputElement.textContent;
-
-  if (passwordText.trim() === "") {
-    alert("Generate a password first.");
-    return;
-  }
-
-  if (!navigator.clipboard) {
-    // Clipboard API not supported
-    fallbackCopyTextToClipboard(passwordText);
-    return;
-  }
-
-  navigator.clipboard
-    .writeText(passwordText)
-    .then(() => {
-      alert("Password copied to clipboard!");
-    })
-    .catch((err) => {
-      console.error("Error copying password to clipboard: ", err);
-      // Fallback method if clipboard write fails
-      fallbackCopyTextToClipboard(passwordText);
-    });
-}
-
-// Fallback method for unsupported browsers
-function fallbackCopyTextToClipboard(text) {
-  const textArea = document.createElement("textarea");
-  textArea.value = text;
-
-  // Avoid scrolling to bottom
-  textArea.style.top = "0";
-  textArea.style.left = "0";
-  textArea.style.position = "fixed";
-
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-
-  try {
-    const successful = document.execCommand("copy");
-    const msg = successful ? "successful" : "unsuccessful";
-    console.log("Fallback: Copying text command was " + msg);
-    alert("Password copied to clipboard!");
-  } catch (err) {
-    console.error("Fallback: Oops, unable to copy", err);
-    alert("Oops, unable to copy password to clipboard. Please copy manually.");
-  }
-
-  document.body.removeChild(textArea);
-}
