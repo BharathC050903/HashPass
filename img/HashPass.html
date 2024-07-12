@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HashPass</title>
+    <script src="HashPass_files/script.js"></script>
+    <script src="HashPass_files/hashFile.js"></script>
+    <link rel="icon" href="HashPass_files/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="HashPass_files/styles.css">
+    <link rel="stylesheet" href="HashPass_files/buttons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="HashPass_files/css2.css" rel="stylesheet">
+  </head>
+  <body class="vsc-initialized" cz-shortcut-listen="true">
+    <section class="box1">
+      <div class="pageHeading typewriter">
+        <img class="logo" src="HashPass_files/logo.png" alt="Lock and documents , the logo of the page">
+        HashPass
+      </div>
+
+      <div class="passwordWebsiteContainer">
+        <div class="passwordTitle">Password:</div>
+        <div class="passwordInput">
+          <input placeholder="Unique Password here" class="textBox passInp" type="text" id="password" value="k1ndAlw!ss@gah">
+          <br>
+          <span class="validation-warning" id="passwordWarning"></span>
+        </div>
+        <div class="websiteTitle">Website Name:</div>
+        <div class="websiteInput">
+          <input placeholder="Eg: netflix" class="textBox" type="text" id="website" value="qjwbefqwejkfb">
+        </div>
+      </div>
+      <div class="options">
+        <div class="checkbox-wrapper-35">
+          <input value="private" name="switch" id="switch" type="checkbox" class="switch" checked="checked">
+          <label for="switch">
+            <span class="switch-x-text">: </span>
+            <span class="switch-x-toggletext">
+              <span class="switch-x-unchecked"><span class="switch-x-hiddenlabel icon">Unchecked: </span>
+                <img src="HashPass_files/eyeClosed.png" alt="See password">
+              </span>
+              <span class="switch-x-checked"><span class="switch-x-hiddenlabel icon">Checked: </span>
+                <img src="HashPass_files/eyeOpen.png" alt="See password">
+              </span>
+            </span>
+          </label>
+        </div>
+
+        <button class="comic-button downloadHash" role="button">
+          <img src="HashPass_files/downlaod.png" class="icon" alt="upload-button">
+          Generate hash
+        </button>
+        <label class="comic-button">
+          <input type="file" class="uploadHash" style="display: none">
+          <img src="HashPass_files/file.png" class="icon" alt="upload-button">
+          Upload hash
+        </label>
+      </div>
+      <span class="fileUploadStatus"></span>
+
+      <div class="HashPassGenerate">
+        <button class="button-30" role="button">Generate ↓</button>
+      </div>
+      <div class="HashPass">
+        <p class="passOutput">aWqy&amp;8:4ymy+8aK#</p>
+
+        <button class="button-54 copy" role="button">
+          <img src="HashPass_files/clipboard.png" class="icon" alt="copy-button">
+        </button>
+      </div>
+    </section>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
