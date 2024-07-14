@@ -57,7 +57,7 @@ body {
 }
 
 .HashPassGenerate {
-  margin-top: 3.2rem;
+  margin-top: 2.2rem;
 }
 
 .GenerateButton {
@@ -67,7 +67,7 @@ body {
 }
 
 .HashPass {
-  margin-top: 2rem;
+  margin-top: 1.8rem;
   font-family: "Recursive", sans-serif;
   font-size: 1.2rem;
   display: flex;
@@ -107,7 +107,7 @@ body {
   margin: 1.8rem;
   display: grid;
   width: 50dvw;
-  grid-template-columns: 0.3fr 0.4fr 0.4fr;
+  grid-template-columns: 0.2fr 0.4fr 0.4fr;
   justify-content: center;
   align-items: center;
 }
@@ -128,7 +128,7 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
   body {
-    background-size: 100dvh; /* Set background size to 100% of the viewport height */
+    background-size: auto; /* Set background size to 100% of the viewport height */
   }
 
   .passwordWebsiteContainer {
@@ -162,6 +162,7 @@ body {
   }
 
   .options {
+    margin: 1.2rem;
     width: 80dvw; /* Adjust width for phone screens */
   }
 
